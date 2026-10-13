@@ -1,0 +1,191 @@
+{
+  "_round": "Phase 0 round 3 — asterisk convention for unsourced numbers; transient values cited inline via 'evidence' instead of fact_ids.",
+  "event_title": "Crude oil spike on Hormuz escalation, hot June WPI and rupee past 96 pressure Indian equities",
+  "event_type": "commodity",
+  "is_update": false,
+  "what_changed_since_last_version": null,
+  "summary": "Renewed US-Iran hostilities over the Strait of Hormuz drove Brent up 14% over four sessions to $85.6/bbl, roughly 19% above its early-July low of about $72; a separate report put Brent at $86.85 on 15 July, so the two sources describe the same mid-$80s move on different bases rather than confirming a single print. Alongside this, June wholesale inflation came in at 9.87% with fuel and power at 27.41%, and the rupee breached 96 per dollar. Foreign portfolio investors reversed an eight-session buying streak to sell Rs 7,443 crore over four sessions, and the Sensex and Nifty closed 0.72% and 0.66% lower on 15 July.",
+  "source_agreement": {
+    "consistent_facts": [
+      {
+        "claim": "June 2026 WPI inflation at 9.87% YoY",
+        "article_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "discrepancies": []
+  },
+  "impact_chains": [
+    {
+      "chain": [
+        {
+          "from": "strait_of_hormuz_disruption_risk",
+          "to": "global_crude_supply_availability",
+          "mechanism": "About a fifth of global oil supplies transit the Strait of Hormuz, so a contested or blockaded waterway puts an outsized share of seaborne supply at risk",
+          "fact_ids": [
+            119
+          ],
+          "evidence": []
+        },
+        {
+          "from": "global_crude_supply_availability",
+          "to": "brent_crude_price",
+          "mechanism": "Threatened supply attracts a risk premium into the benchmark: Brent climbed 14% over four sessions to $85.6 and is roughly 19% above its early-July low of about $72",
+          "fact_ids": [
+            116,
+            117,
+            118
+          ],
+          "evidence": []
+        }
+      ],
+      "terminal_impact": {
+        "asset": "energy_commodity_exposure",
+        "direction": "positive",
+        "magnitude": "moderate",
+        "conditionality": "if Hormuz access remains contested and the interim US-Iran agreement stays unresolved"
+      },
+      "chain_confidence": "medium"
+    },
+    {
+      "chain": [
+        {
+          "from": "brent_crude_price",
+          "to": "india_crude_import_bill",
+          "mechanism": "India meets the large majority of its crude demand through imports (approximately 85%*), so a higher benchmark price raises the dollar import bill close to proportionally. No supplied fact states India's import-dependency share, so this hop carries no citation",
+          "fact_ids": [],
+          "evidence": []
+        },
+        {
+          "from": "india_crude_import_bill",
+          "to": "inr_usd",
+          "mechanism": "A larger oil import bill widens the current-account deficit and structural dollar demand, adding depreciation pressure; the rupee has breached the 96-per-dollar mark",
+          "fact_ids": [
+            107
+          ],
+          "evidence": []
+        },
+        {
+          "from": "inr_usd",
+          "to": "fpi_equity_flows",
+          "mechanism": "A weaker rupee erodes dollar-denominated returns for foreign investors, who are described as viewing India largely through the prism of oil prices; FPIs turned net sellers of Rs 7,443 crore over four sessions including Rs 4,206 crore in the latest session",
+          "fact_ids": [
+            123,
+            120,
+            121
+          ],
+          "evidence": []
+        },
+        {
+          "from": "fpi_equity_flows",
+          "to": "largecap_equity",
+          "mechanism": "Sustained FPI selling withdraws marginal demand from the large-cap benchmarks foreign investors are most concentrated in; the benchmark indices closed lower on 15 July, with CY2026 cumulative outflows of Rs 2.6 trillion already exceeding any prior full calendar year",
+          "fact_ids": [
+            122
+          ],
+          "evidence": [
+            {
+              "metric": "sensex_change_pct",
+              "value": "-0.72",
+              "as_of_period": "15-Jul-2026 close",
+              "article_id": 1
+            },
+            {
+              "metric": "nifty50_change_pct",
+              "value": "-0.66",
+              "as_of_period": "15-Jul-2026 close",
+              "article_id": 1
+            }
+          ]
+        }
+      ],
+      "terminal_impact": {
+        "asset": "largecap_equity",
+        "direction": "negative",
+        "magnitude": "moderate",
+        "conditionality": "if Brent sustains above roughly $90 and FPI selling persists beyond a few sessions"
+      },
+      "chain_confidence": "medium"
+    },
+    {
+      "chain": [
+        {
+          "from": "brent_crude_price",
+          "to": "india_fuel_and_power_prices",
+          "mechanism": "Crude feeds directly into mineral oils and the fuel-and-power wholesale group; mineral oils inflation ran at 46.48% and crude petroleum and natural gas at 34.75% in June, with fuel and power at 27.41%",
+          "fact_ids": [
+            113,
+            114,
+            112
+          ],
+          "evidence": []
+        },
+        {
+          "from": "india_fuel_and_power_prices",
+          "to": "wpi_inflation",
+          "mechanism": "Fuel and power is a major WPI group, so elevated fuel prices hold headline wholesale inflation up; the all-commodities index rose to 110.2 and headline WPI to 9.87% in June",
+          "fact_ids": [
+            108,
+            111
+          ],
+          "evidence": []
+        },
+        {
+          "from": "wpi_inflation",
+          "to": "monetary_policy_easing_room",
+          "mechanism": "Persistently high wholesale inflation narrows the room for policy easing. No fact on the RBI's stance or reaction function was supplied, so this hop is reasoning only",
+          "fact_ids": [],
+          "evidence": []
+        }
+      ],
+      "terminal_impact": {
+        "asset": "rate_sensitive_debt_exposure",
+        "direction": "negative",
+        "magnitude": "small",
+        "conditionality": "if crude-driven inflation carries into the next policy review"
+      },
+      "chain_confidence": "low"
+    }
+  ],
+  "historical_patterns_cited": [],
+  "investor_actions_conditional": [
+    {
+      "if": "Brent sustains above roughly $90 for several weeks",
+      "then": "upstream and energy exposure behaves as a partial natural hedge against the import-bill channel, while aviation and paints exposure carries the opposite input-cost sensitivity and is worth reviewing",
+      "horizon": "weeks"
+    },
+    {
+      "if": "FPI selling continues alongside a weaker rupee",
+      "then": "large-cap indices with the heaviest foreign ownership are more exposed to the flow channel than domestically-owned mid and small caps",
+      "horizon": "weeks"
+    },
+    {
+      "if": "the US 10-year yield stays near 4.59%",
+      "then": "the relative pull of developed-market bonds remains a second headwind to FPI return that is independent of crude, so a crude retreat alone may not restore inflows",
+      "horizon": "months"
+    }
+  ],
+  "relevant_fund_categories": [
+    "Energy",
+    "Transportation",
+    "Banking & Financials",
+    "Large Cap",
+    "Short Duration Debt"
+  ],
+  "rm_one_liner": "This is largely an oil story: a Hormuz-driven crude spike is feeding inflation, weakening the rupee and pushing foreign investors to sell, which pressures large-cap indices until crude and the West Asia situation settle.",
+  "data_gaps_for_kb": [
+    "India's crude import-dependency share — used ~85% as a general-knowledge approximation on a chain hop; not stated in any source and requires KB verification",
+    "Sensitivity of India's current-account deficit to a $10/bbl move in crude",
+    "Quantified historical Nifty and Sensex response to past sustained crude spikes, to support historical_pattern facts",
+    "Sector-wise crude-derivative input cost shares for aviation, paints, chemicals and logistics",
+    "Pass-through elasticity from WPI/crude into retail CPI, and the RBI's reaction function",
+    "Foreign ownership share of large-cap versus mid and small-cap indices, to size the FPI flow channel"
+  ],
+  "footnotes": {
+    "*": "No official records found supporting this data"
+  },
+  "confidence_overall": "medium",
+  "time_horizon": "weeks"
+}

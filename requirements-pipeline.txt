@@ -1,0 +1,9 @@
+# Pipeline core (run_ingest.py S1-S5 and run_s6.py S6). NO streamlit — GitHub Actions installs this so it skips
+# streamlit's heavy tree (altair/pyarrow/websockets). All prebuilt wheels; feedparser
+# (->sgmllib3k) is deliberately out (S1 has a stdlib RSS fallback in src/rss.py).
+PyYAML==6.0.2
+psycopg2-binary==2.9.10
+anthropic==0.122.0               # the only LLM provider; Sonnet 5 / Opus 5.5 need a current SDK
+jsonschema==4.25.0               # S6 write gate validates every card against INTERPRET_SCHEMA
+trafilatura==1.12.2              # full article-body extraction (raw_text)
+truststore==0.10.1               # trust OS cert store behind corporate/AV TLS proxies

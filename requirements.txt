@@ -1,0 +1,16 @@
+# =============================================================================
+#  FULL install = pipeline core + Streamlit UI. Streamlit Community Cloud installs
+#  from THIS file, so streamlit is pinned here. The pipeline core lives in
+#  requirements-pipeline.txt; GitHub Actions installs THAT instead, so CI skips
+#  streamlit's heavy tree (altair/pyarrow) and finishes faster.
+#  On Windows the streamlit tree can hit the antivirus-lock "[Errno 13]" error —
+#  if so, pause real-time protection or install --user.
+# =============================================================================
+-r requirements-pipeline.txt
+-r requirements-ui.txt
+
+# =============================================================================
+#  INSTALL SEPARATELY (kept out of the batch on purpose)
+# =============================================================================
+#   pip install -r requirements-dev.txt      # pytest, for the test suite
+#   pip install feedparser --no-cache-dir    # optional, more robust RSS parser

@@ -1,0 +1,409 @@
+{
+  "_round": "Phase 0 round 3 — S5 output. Index closes and daily % moves are no longer persisted; fact_id gaps (101-104, 109) are intentional and mark the removed transient rows.",
+  "_s5_rules_applied": [
+    "Dedup key = canonical metric + EXACT as_of_period match.",
+    "2+ articles, same metric AND same period, values within 2% or exact string -> cross_source_consistent.",
+    "Values conflict on same metric+period -> discrepancy_flagged, retain all values.",
+    "kb_candidate = true where persistence_tier = 'kb_durable'."
+  ],
+  "event_id": 1,
+  "facts": [
+    {
+      "fact_id": 105,
+      "metric": "brent_crude_price",
+      "value": "86.85",
+      "unit": "USD/barrel",
+      "as_of_period": "15-Jul-2026",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        1
+      ],
+      "kb_candidate": false,
+      "s5_note": "REGRESSION CASE: deliberately NOT merged with fact 116 ($85.6). Values are within 2%, but as_of_period differs (15-Jul close vs past-4-sessions-to-16-Jul). Per v1.1 S5 spec, period match is required BEFORE the value tolerance is even evaluated. This is the behaviour tests/ must lock in."
+    },
+    {
+      "fact_id": 106,
+      "metric": "brent_crude_change_pct",
+      "value": "4.26",
+      "unit": "%",
+      "as_of_period": "15-Jul-2026 session",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        1
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 107,
+      "metric": "inr_usd",
+      "value": "96",
+      "unit": "INR/USD",
+      "as_of_period": "15-Jul-2026",
+      "category": "forex",
+      "entities": [
+        "inr",
+        "usd"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "supporting_article_ids": [
+        1
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 108,
+      "metric": "wpi_inflation_yoy",
+      "value": "9.87",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "cross_source_consistent",
+      "confidence": "high",
+      "supporting_article_ids": [
+        1,
+        2
+      ],
+      "kb_candidate": false,
+      "s5_note": "UPGRADED: articles 1 and 2 state 9.87% for the SAME metric and SAME as_of_period (June 2026 YoY), exact string match -> cross_source_consistent. Two source rows collapsed into one fact; provenance preserved in supporting_article_ids."
+    },
+    {
+      "fact_id": 110,
+      "metric": "fii_net_equity_flow",
+      "value": "-3062.27",
+      "unit": "INR_crore",
+      "as_of_period": "13-Jul-2026 (Monday)",
+      "category": "equity",
+      "entities": [
+        "fii",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        1
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 111,
+      "metric": "wpi_all_commodities_index",
+      "value": "110.2",
+      "unit": "index_points",
+      "as_of_period": "June 2026 (base 2022-23)",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        2
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 112,
+      "metric": "fuel_power_wpi_yoy",
+      "value": "27.41",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "fuel_power"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        2
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 113,
+      "metric": "mineral_oils_wpi_yoy",
+      "value": "46.48",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "mineral_oils"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        2
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 114,
+      "metric": "crude_petroleum_natural_gas_wpi_yoy",
+      "value": "34.75",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "crude_petroleum_natural_gas"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        2
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 115,
+      "metric": "manufactured_products_wpi_yoy",
+      "value": "7.48",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "manufactured_products"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        2
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 116,
+      "metric": "brent_crude_price",
+      "value": "85.6",
+      "unit": "USD/barrel",
+      "as_of_period": "past 4 sessions to 16-Jul-2026",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 117,
+      "metric": "brent_crude_change_pct",
+      "value": "14",
+      "unit": "%",
+      "as_of_period": "past 4 sessions to 16-Jul-2026",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 118,
+      "metric": "brent_crude_price",
+      "value": "~72",
+      "unit": "USD/barrel",
+      "as_of_period": "early July 2026 (month low)",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 119,
+      "metric": "strait_of_hormuz_global_oil_supply_share",
+      "value": "~20",
+      "unit": "%",
+      "as_of_period": null,
+      "category": "commodity",
+      "entities": [
+        "strait_of_hormuz",
+        "global_crude_supply"
+      ],
+      "fact_type": "structural",
+      "persistence_tier": "kb_durable",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": true,
+      "s5_note": "kb_durable structural fact -> kb_candidate true. This is the KB asset class: a supply-route capacity share that stays true beyond this event."
+    },
+    {
+      "fact_id": 120,
+      "metric": "fpi_net_equity_flow",
+      "value": "-7443",
+      "unit": "INR_crore",
+      "as_of_period": "past 4 sessions to 16-Jul-2026",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 121,
+      "metric": "fpi_net_equity_flow",
+      "value": "-4206",
+      "unit": "INR_crore",
+      "as_of_period": "16-Jul-2026 (latest session)",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": false
+    },
+    {
+      "fact_id": 122,
+      "metric": "fpi_net_equity_flow_cy_cumulative",
+      "value": "-2.6",
+      "unit": "INR_trillion",
+      "as_of_period": "CY2026 YTD",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "kb_durable",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": true,
+      "s5_note": "Cumulative record-setting figure -> kb_durable despite point_in_time fact_type."
+    },
+    {
+      "fact_id": 123,
+      "metric": "fpi_flow_sensitivity_to_crude",
+      "value": "foreign investors view India largely through the prism of oil prices",
+      "unit": null,
+      "as_of_period": null,
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india",
+        "brent_crude"
+      ],
+      "fact_type": "structural",
+      "persistence_tier": "kb_durable",
+      "verification_status": "single_source",
+      "confidence": "low",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": true,
+      "s5_note": "Named-expert mechanism claim (U R Bhat). Low confidence, but it is the ONLY supplied fact evidencing the crude -> FPI transmission mechanism, so S6 may legitimately cite it on that hop."
+    },
+    {
+      "fact_id": 124,
+      "metric": "us_10y_yield",
+      "value": "4.59",
+      "unit": "%",
+      "as_of_period": "16-Jul-2026",
+      "category": "global_markets",
+      "entities": [
+        "us_treasury_10y",
+        "usa"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "supporting_article_ids": [
+        3
+      ],
+      "kb_candidate": false
+    }
+  ],
+  "_s5_summary": {
+    "facts_in": 20,
+    "facts_out": 19,
+    "merged": 1,
+    "upgraded_to_cross_source_consistent": 1,
+    "discrepancies_flagged": 0,
+    "kb_candidates": 3,
+    "transient_not_persisted": 5,
+    "storage_note": "Round 2 persisted 24 facts. Round 3 persists 19. The 5 dropped rows were benchmark index closes/moves and one single-stock daily move — pure daily noise with no durable value.",
+    "discrepancy_note": "No true discrepancy arose. The Brent $86.85 vs $85.6 difference is a PERIOD difference, not a source conflict."
+  }
+}

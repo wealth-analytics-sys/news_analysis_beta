@@ -1,0 +1,179 @@
+# Controlled event taxonomy (decision: round 6, Rushabh).
+#
+# S2 triage MUST pick event_type from this list — it may not invent one. The final
+# event_key is built deterministically as:   <event_type>-<period_suffix>
+#
+# Why: with free-text keys the model produced FOUR separate keys for Q1 earnings
+# (tvs-motor-q1, adani-energy-q1, karur-vysya-q1, india-q1-season), fragmenting one
+# story into four singleton events. A fixed vocabulary makes grouping deterministic and
+# drops similarity to a fallback signal, so the 0.80 threshold stops being load-bearing.
+#
+# period_suffix rules:
+#   daily     -> DDmonYYYY   (e.g. 21jul2026)  — one card per day
+#   monthly   -> monYYYY     (e.g. jul2026)    — one card per month
+#   quarterly -> qNfyYY      (e.g. q1fy27)     — one card per quarter
+#   rolling   -> monYYYY     — an ongoing situation, updated in place within the month
+
+event_types:
+  # ---------------- macro and policy
+  - slug: rbi-policy
+    period: rolling
+    description: RBI rate decisions, MPC minutes, liquidity and regulatory measures
+    typical_category: debt_rates
+
+  - slug: inflation-print
+    period: monthly
+    description: CPI, WPI, core inflation releases and their component breakdowns
+    typical_category: macro_economics
+
+  - slug: growth-data
+    period: monthly
+    description: GDP, IIP, PMI, unemployment and other activity releases
+    typical_category: macro_economics
+
+  - slug: trade-and-external
+    period: monthly
+    description: Trade deficit, current account, forex reserves, export-import data
+    typical_category: macro_economics
+
+  - slug: fiscal-policy
+    period: rolling
+    description: Budget, government borrowing, taxation and subsidy changes
+    typical_category: policy_regulation
+
+  - slug: regulatory-change
+    period: rolling
+    description: SEBI, IRDAI and other regulator rule changes affecting markets or funds
+    typical_category: policy_regulation
+
+  # ---------------- markets
+  - slug: market-daily-wrap
+    period: daily
+    aggregation: rollup        # ALL wrap articles for a day -> ONE event (never split)
+    description: >
+      Index close and session commentary. Kept deliberately: it stores no durable facts
+      but gives S6 narrative context (decision Q1, round 6). ONE card per day, never one
+      per article.
+    typical_category: equity
+
+  - slug: fpi-flows
+    period: rolling
+    description: Foreign portfolio and institutional flow trends, ownership shifts
+    typical_category: equity
+
+  - slug: domestic-flows
+    period: rolling
+    description: SIP, mutual fund AUM, DII flows, retail participation
+    typical_category: equity
+
+  - slug: rupee-move
+    period: rolling
+    description: INR moves, RBI intervention, dollar index effects
+    typical_category: forex
+
+  - slug: bond-yields
+    period: rolling
+    description: G-sec yields, auctions, corporate spreads, global yield spillovers
+    typical_category: debt_rates
+
+  # ---------------- commodities
+  - slug: crude-price-move
+    period: rolling
+    description: Crude oil price moves, OPEC decisions, supply-route disruption
+    typical_category: commodity
+
+  - slug: gold-price-move
+    period: rolling
+    description: Gold and precious metal moves, safe-haven demand
+    typical_category: commodity
+
+  - slug: commodity-other
+    period: rolling
+    description: Metals, agri, gas and other commodity moves
+    typical_category: commodity
+
+  # ---------------- corporate
+  - slug: india-earnings-season
+    period: quarterly
+    aggregation: rollup        # ALL company results for a quarter -> ONE event (never split)
+    description: >
+      ALL individual company results roll into ONE seasonal card (decision Q2, round 6).
+      TVS Q1, Adani Q1 and a results-roundup article all share this key. Do NOT create
+      per-company keys.
+    typical_category: sector_industry
+
+  - slug: corporate-action
+    period: rolling
+    description: M&A, spin-offs, buybacks, fundraises, delistings, IPOs
+    typical_category: sector_industry
+
+  - slug: sector-development
+    period: rolling
+    description: >
+      Sector-level structural news — capacity, contracts, policy support, input costs.
+      Long-term supply agreements and infrastructure commitments belong here.
+    typical_category: sector_industry
+
+  # ---------------- global
+  - slug: global-monetary-policy
+    period: rolling
+    description: Fed, ECB, BoJ decisions and developed-market rate expectations
+    typical_category: global_markets
+
+  - slug: geopolitical-risk
+    period: rolling
+    description: Conflicts, sanctions, trade wars, chokepoint disruption
+    typical_category: global_markets
+
+  - slug: global-markets-move
+    period: rolling
+    description: Overseas index moves and cross-market spillovers into India
+    typical_category: global_markets
+
+  # ---------------- fallback
+  - slug: uncategorised
+    period: daily
+    description: >
+      Use ONLY when nothing above fits. Frequent use is a signal the taxonomy needs
+      extending — surfaced for review, never auto-added.
+    typical_category: macro_economics
+
+# =============================================================================
+#  CARD CATEGORIES — the six top-level buckets an RM browses by (round 7, Rushabh).
+#  Each event_type rolls up into exactly one. S6 sends the mapped value to the LLM as a
+#  suggested_category and falls back to it if the model omits or returns 'other'.
+#  Split from the old scheme: 'world' -> global_economy (economy/policy) + global_equity
+#  (overseas stock markets).
+# =============================================================================
+card_category_of_event_type:
+  rbi-policy: indian_economy
+  inflation-print: indian_economy
+  growth-data: indian_economy
+  trade-and-external: indian_economy
+  fiscal-policy: indian_economy
+  rupee-move: indian_economy
+  bond-yields: indian_economy
+  regulatory-change: regulatory
+  market-daily-wrap: indian_equity_corporate
+  fpi-flows: indian_equity_corporate
+  domestic-flows: indian_equity_corporate
+  india-earnings-season: indian_equity_corporate
+  corporate-action: indian_equity_corporate
+  sector-development: indian_equity_corporate
+  crude-price-move: commodity
+  gold-price-move: commodity
+  commodity-other: commodity
+  global-monetary-policy: global_economy
+  geopolitical-risk: global_economy
+  global-markets-move: global_equity
+  uncategorised: other
+
+# Human-readable labels for display (S7 UI, digests).
+card_category_labels:
+  global_economy: "Global Economy"
+  global_equity: "Global Equity"
+  indian_economy: "Indian Economy"
+  indian_equity_corporate: "Indian Equity and Corporates"
+  commodity: "Commodity"
+  regulatory: "Regulatory"
+  other: "Other"

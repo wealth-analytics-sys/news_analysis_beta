@@ -1,0 +1,84 @@
+# S1 ingest source list. Adding a source must require ZERO code changes.
+# Each entry: name, url (RSS/Atom), enabled, optional section hint.
+
+sources:
+  - name: ET Markets
+    url: https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms
+    enabled: true
+
+  - name: Mint Markets
+    url: https://www.livemint.com/rss/markets
+    enabled: true
+
+  - name: ET Economy
+    url: https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms
+    enabled: true
+
+  - name: Mint Economy
+    url: https://www.livemint.com/rss/economy
+    enabled: true
+
+  # Moneycontrol RSS is abandoned — every path tested returns entries frozen at
+  # 2024-04-23 (818 days stale as of the Phase 1 build). Enabling these would inject
+  # two-year-old articles as current news. Disabled. See BUILD_NOTES F13.
+  - name: Moneycontrol Latest
+    url: https://www.moneycontrol.com/rss/latestnews.xml
+    enabled: false
+
+  - name: Moneycontrol Markets
+    url: https://www.moneycontrol.com/rss/marketreports.xml
+    enabled: false
+
+  - name: Hindu BusinessLine Markets
+    url: https://www.thehindubusinessline.com/markets/feeder/default.rss
+    enabled: true
+
+  # Business Standard is named in CLAUDE.md §2 but blocks automated access with a hard
+  # HTTP 403 on every RSS path tried, from any user-agent. Left here disabled so the
+  # intent is visible. See BUILD_NOTES F13.
+  - name: Business Standard Markets
+    url: https://www.business-standard.com/rss/markets-106.rss
+    enabled: false
+
+  - name: RBI Press Releases
+    url: https://www.rbi.org.in/pressreleases_rss.xml
+    enabled: true
+
+  - name: SEBI Press Releases
+    url: https://www.sebi.gov.in/sebirss.xml
+    enabled: true
+
+# ------------------------------------------------------------------ S2 Pass A
+filter:
+  # Sources never ingested regardless of feed content.
+  source_blacklist: []
+
+  # Dropped if the URL or title matches any of these (case-insensitive).
+  section_blacklist:
+    - /sports/
+    - /entertainment/
+    - /lifestyle/
+    - /astrology/
+    - /cricket/
+    - /football/
+    - /bollywood/
+    - /travel/
+    - /food/
+    - /health-and-fitness/
+    - /auto-shows/
+
+  # Near-duplicate title threshold (0-1). >= this ratio counts as duplicate.
+  duplicate_title_ratio: 0.90
+
+  # Triage bar. An article is KEPT if EITHER portfolio_relevance OR kb_value reaches this
+  # (decision: Option A, round 6). Raise kb_value's effective bar by raising this value.
+  triage_threshold: 7
+
+  # Articles per LLM triage call. Smaller = faster calls and a smaller batch to retry
+  # if one fails; larger = fewer calls.
+  triage_batch_size: 10
+
+# ------------------------------------------------------------------ S3
+cluster:
+  open_event_lookback_days: 7  # open events offered to the clustering LLM for attaching stories
+  auto_close_days: 7           # events whose newest NEWS is older than this are closed

@@ -1,0 +1,149 @@
+# Entity dictionary seed — canonical slugs and aliases.
+# AWAITING RUSHABH'S REVIEW (CLAUDE.md §9 open question 4).
+
+entities:
+  # ---------------- indices and markets
+  - canonical_slug: nifty_50
+    aliases: [nifty, nifty 50, nse nifty, nifty50]
+  - canonical_slug: bse_sensex
+    aliases: [sensex, bse sensex, s&p bse sensex]
+  - canonical_slug: bank_nifty
+    aliases: [nifty bank, bank nifty]
+  - canonical_slug: nifty_midcap
+    aliases: [midcap index, nifty midcap 100]
+  - canonical_slug: nifty_smallcap
+    aliases: [smallcap index, nifty smallcap 100]
+  - canonical_slug: nifty_it
+    aliases: [it index, nifty it]
+  - canonical_slug: india
+    aliases: [indian economy, indian markets, domestic]
+
+  # ---------------- institutions
+  - canonical_slug: rbi
+    aliases: [reserve bank of india, central bank, mpc]
+  - canonical_slug: sebi
+    aliases: [securities and exchange board of india, market regulator]
+  - canonical_slug: mospi
+    aliases: [ministry of statistics, statistics ministry]
+  - canonical_slug: finance_ministry
+    aliases: [ministry of finance, north block]
+  - canonical_slug: us_federal_reserve
+    aliases: [fed, federal reserve, fomc]
+  - canonical_slug: opec
+    aliases: [opec+, oil cartel]
+  - canonical_slug: imf
+    aliases: [international monetary fund]
+
+  # ---------------- investor classes
+  - canonical_slug: fii
+    aliases: [foreign institutional investors, fiis]
+  - canonical_slug: fpi
+    aliases: [foreign portfolio investors, fpis, foreign investors]
+  - canonical_slug: dii
+    aliases: [domestic institutional investors, diis]
+  - canonical_slug: retail_investors
+    aliases: [retail, individual investors]
+  - canonical_slug: mutual_funds
+    aliases: [mf, domestic mutual funds]
+
+  # ---------------- commodities and currencies
+  - canonical_slug: brent_crude
+    aliases: [brent, brent oil, global oil benchmark]
+  - canonical_slug: wti_crude
+    aliases: [wti, west texas]
+  - canonical_slug: crude_oil
+    aliases: [oil, petroleum]
+  - canonical_slug: gold
+    aliases: [bullion]
+  - canonical_slug: natural_gas
+    aliases: [gas, lng]
+  - canonical_slug: inr
+    aliases: [rupee, indian rupee]
+  - canonical_slug: usd
+    aliases: [dollar, us dollar, greenback]
+  - canonical_slug: global_crude_supply
+    aliases: [world oil supply, seaborne supply]
+
+  # ---------------- geographies and chokepoints
+  - canonical_slug: strait_of_hormuz
+    aliases: [hormuz, hormuz strait]
+  - canonical_slug: west_asia
+    aliases: [middle east, gulf region]
+  - canonical_slug: iran
+    aliases: [tehran]
+  - canonical_slug: usa
+    aliases: [united states, us, america]
+  - canonical_slug: china
+    aliases: [prc, beijing]
+  - canonical_slug: european_union
+    aliases: [eu, europe]
+  - canonical_slug: red_sea
+    aliases: [suez route]
+
+  # ---------------- macro concepts
+  - canonical_slug: wpi
+    aliases: [wholesale price index]
+  - canonical_slug: cpi
+    aliases: [consumer price index, retail inflation]
+  - canonical_slug: fuel_power
+    aliases: [fuel and power]
+  - canonical_slug: mineral_oils
+    aliases: [mineral oil]
+  - canonical_slug: crude_petroleum_natural_gas
+    aliases: [crude petroleum and natural gas]
+  - canonical_slug: manufactured_products
+    aliases: [manufactured goods]
+  - canonical_slug: current_account
+    aliases: [cad, current account deficit]
+  - canonical_slug: fiscal_deficit
+    aliases: [fiscal gap]
+  - canonical_slug: us_treasury_10y
+    aliases: [us 10 year treasury, us 10y]
+
+  # ---------------- sectors
+  - canonical_slug: banking_sector
+    aliases: [banks, financials, bfsi]
+  - canonical_slug: it_sector
+    aliases: [information technology, tech services]
+  - canonical_slug: energy_sector
+    aliases: [oil and gas sector, energy]
+  - canonical_slug: aviation_sector
+    aliases: [airlines, aviation]
+  - canonical_slug: paints_sector
+    aliases: [paint companies, decorative paints]
+  - canonical_slug: auto_sector
+    aliases: [automobiles, auto]
+  - canonical_slug: pharma_sector
+    aliases: [pharmaceuticals, pharma]
+  - canonical_slug: fmcg_sector
+    aliases: [consumer staples, fmcg]
+  - canonical_slug: metals_sector
+    aliases: [metals and mining, steel sector]
+  - canonical_slug: realty_sector
+    aliases: [real estate, realty]
+  - canonical_slug: chemicals_sector
+    aliases: [specialty chemicals, chemicals]
+  - canonical_slug: logistics_sector
+    aliases: [transportation, shipping]
+
+  # ---------------- frequently named companies
+  - canonical_slug: reliance_industries
+    aliases: [ril, reliance]
+  - canonical_slug: hdfc_bank
+    aliases: [hdfc bank ltd]
+  - canonical_slug: icici_bank
+    aliases: [icici]
+  - canonical_slug: state_bank_of_india
+    aliases: [sbi]
+  - canonical_slug: infosys
+    aliases: [infy]
+  - canonical_slug: tcs
+    aliases: [tata consultancy services]
+  - canonical_slug: hcl_technologies
+    aliases: [hcl tech, hcltech]
+  - canonical_slug: bharti_airtel
+    aliases: [airtel]
+  - canonical_slug: larsen_toubro
+    aliases: [l&t, larsen and toubro]
+  - canonical_slug: indigo
+    aliases: [interglobe aviation, indigo airlines]

@@ -1,0 +1,83 @@
+name: news-pipeline
+
+# Part 1 of the pipeline (S1-S5: ingest, filter, cluster, extract, fact-ingest).
+# S6 (interpretation) normally runs separately in agent mode — Claude Code writes the cards
+# via /s6-interpret, on your computer or a Claude Code scheduled task, with no API credits.
+# A manual run can opt in to S6 API mode below (spends API credits).
+#
+# 08:00 IST = 02:30 UTC. GitHub runs scheduled jobs best-effort: they can start hours late. Once a day, weekdays only (Mon-Fri). GitHub cron is UTC;
+# day-of-week 1-5 = Monday-Friday, so it never runs Saturday/Sunday.
+on:
+  schedule:
+    - cron: "30 2 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      stages:
+        description: "S1-S5 stages to run (comma-separated; s5 needs s4)"
+        default: "s1,s2,s3,s4,s5"
+      run_s6_api:
+        description: "Also run S6 in API mode afterwards (spends API credits)"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Run without DB writes or API spend"
+        type: boolean
+        default: false
+
+concurrency:
+  group: news-pipeline
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      # Anthropic only (BUILD_NOTES D15). Override any of these with repo variables.
+      LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'anthropic' }}
+      LLM_PROVIDER_CHEAP: ${{ vars.LLM_PROVIDER_CHEAP || 'anthropic' }}
+      LLM_PROVIDER_STRONG: ${{ vars.LLM_PROVIDER_STRONG || 'anthropic' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      MODEL_CHEAP_ANTHROPIC: ${{ vars.MODEL_CHEAP_ANTHROPIC || 'claude-haiku-4-5-20251001' }}
+      MODEL_STRONG_ANTHROPIC: ${{ vars.MODEL_STRONG_ANTHROPIC || 'claude-sonnet-5' }}
+      # github.event.inputs is null on the scheduled (cron) trigger; default to a real run.
+      DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Pipeline core only — NOT streamlit (requirements.txt), which the pipeline never
+          # imports. pytest lives in requirements-dev.txt for the test step.
+          pip install -r requirements-pipeline.txt -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest tests/ -q
+
+      # Output is tee'd to a file so the run is downloadable as an artifact; pipefail keeps
+      # the job red if a stage exits non-zero (e.g. every S2 triage batch failed — F33).
+      - name: Run S1-S5 (run_ingest.py)
+        run: |
+          set -o pipefail
+          python run_ingest.py --stages "${{ github.event.inputs.stages || 's1,s2,s3,s4,s5' }}" 2>&1 | tee pipeline.log
+
+      - name: Run S6 in API mode (opt-in)
+        if: ${{ github.event.inputs.run_s6_api == 'true' }}
+        run: |
+          set -o pipefail
+          python run_s6.py api 2>&1 | tee -a pipeline.log
+
+      - name: Upload run log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-run-${{ github.run_id }}
+          path: pipeline.log
+          if-no-files-found: warn

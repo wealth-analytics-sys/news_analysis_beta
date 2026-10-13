@@ -1,0 +1,37 @@
+{
+  "note": "Phase 0 dry-run input. Real articles collected 17-Jul-2026 for the crude-spike + WPI + rupee event. This is the bundle S3 (cluster) would hand to S4 (extract).",
+  "event_meta": {
+    "id": 1,
+    "event_key": "crude-spike-wpi-rupee-jul2026",
+    "title": "Crude oil spike + hot June WPI + rupee past 96 pressure Indian equities",
+    "event_type": "commodity",
+    "first_seen": "2026-07-15T00:00:00+05:30",
+    "last_updated": "2026-07-17T08:00:00+05:30"
+  },
+  "articles": [
+    {
+      "article_id": 1,
+      "source": "The Morning Voice",
+      "url": "https://tmv.in/article/markets-sink-on-oil-price-shock-sensex-drops-over-560-points-nifty-loses-159-date=2026-07-15",
+      "published_at": "2026-07-15T18:00:00+05:30",
+      "title": "Markets Sink on Oil Price Shock, Sensex Drops Over 560 Points, Nifty Loses 159",
+      "body": "Indian benchmark indices ended sharply lower on Tuesday, snapping a three-session winning streak, as a surge in global crude oil prices amid escalating West Asia tensions weighed heavily on investor sentiment. Persistent foreign institutional investor (FII) outflows, a weakening rupee, and rising inflation concerns further dampened market confidence. The 30-share BSE Sensex plunged 561.46 points, or 0.72 per cent, to settle at 77,054.94, after falling as much as 614.92 points during intraday trade. The NSE Nifty 50 also declined 158.95 points, or 0.66 per cent, to close at 24,052.05. Among the Sensex constituents, HCL Technologies emerged as the biggest loser, dropping 4.42 per cent. Market sentiment took a hit after Brent crude, the global oil benchmark, surged 4.26 per cent to USD 86.85 per barrel, raising concerns over inflation and India's import bill. According to Vinod Nair, Head of Research at Geojit Investments Ltd, the sharp rise in crude oil prices due to renewed geopolitical tensions has revived fears that higher energy costs could delay the recovery in India's corporate earnings. He added that the rupee breaching the 96-per-US dollar mark has intensified concerns over imported inflation, further weighing on domestic equities. Adding to the pressure, India's wholesale price inflation (WPI) rose to 9.87 per cent in June, compared with 9.68 per cent in May, driven by a sharp increase in food and non-food prices. Meanwhile, exchange data showed that foreign institutional investors sold equities worth Rs 3,062.27 crore on Monday, extending pressure on domestic markets."
+    },
+    {
+      "article_id": 2,
+      "source": "APAC News Network",
+      "url": "https://apacnewsnetwork.com/2026/07/wpi-inflation-rises-987-june-2026/",
+      "published_at": "2026-07-15T12:00:00+05:30",
+      "title": "WPI Inflation Rises to 9.87% in June 2026 on Higher Fuel, Food and Metal Prices",
+      "body": "India's wholesale price index (WPI) inflation rose to 9.87 percent in June 2026, compared with 9.68 percent in May 2026, mainly due to continued price pressures in fuel, food articles, basic metals, and chemical products, according to provisional data released by the government on Tuesday. The All-India Wholesale Price Index (WPI) for June 2026 stood at 110.2, against 109.9 in May 2026, under the revised base year 2022-23. Among the three major groups, Fuel and Power recorded the highest inflation rate at 27.41 per cent in June, although it moderated from 30.33 per cent in May. Within the fuel category, mineral oils registered inflation of 46.48 per cent, while crude petroleum and natural gas saw inflation of 34.75 per cent. Inflation in primary articles increased to 7 percent in June, from 4.99 percent in May. The Manufactured Products segment recorded inflation of 7.48 percent, unchanged from May. Major contributors within manufactured products included basic metals with 12.31 percent inflation, chemicals and chemical products with 12.78 percent. The WPI Food Index recorded inflation of 6.14 per cent in June, compared with 4.49 per cent in May."
+    },
+    {
+      "article_id": 3,
+      "source": "Business Standard",
+      "url": "https://www.business-standard.com/markets/news/oil-price-surge-derails-fpi-return-to-indian-equities-amid-west-asia-crisis-126071601231_1.html",
+      "published_at": "2026-07-16T19:47:00+05:30",
+      "title": "Oil price surge derails FPI return to Indian equities amid West Asia crisis",
+      "body": "A sharp rise in crude oil prices amid renewed tensions in West Asia threatens to derail the return of foreign portfolio investors (FPIs) to Indian equities. After remaining net buyers for eight consecutive sessions, FPIs have turned net sellers over the past four sessions, offloading shares worth Rs 7,443 crore. They sold equities worth Rs 4,206 crore in the latest session alone. The reversal has coincided with a steep increase in global oil prices. Brent crude has climbed 14 per cent over the past four sessions to $85.6 a barrel following the re-escalation of hostilities in West Asia. From its low of about $72 at the beginning of July, the benchmark has risen nearly 19 per cent. The US launched further airstrikes on Iran, with the two sides locked in a dispute over control of the Strait of Hormuz, a key oil-shipping route through which about a fifth of global oil supplies pass. For India, a sustained rise in crude prices could increase inflationary pressures, weaken the rupee, widen external and fiscal imbalances, and weigh on economic growth because of the country's heavy dependence on imported energy. FPIs have already withdrawn Rs 2.6 trillion from Indian equities in 2026, exceeding the outflows recorded in any previous full calendar year. March accounted for the bulk of the exodus, with foreign investors selling shares worth Rs 1.1 trillion. U R Bhat, cofounder of Alphaniti Fintech, said foreign investors tend to view India largely through the prism of oil prices. Pramod Gubbi, cofounder of Marcellus Investment Managers, said with the US 10-year yield at around 4.59 per cent, investors can earn attractive returns in developed-market bonds without taking on emerging-market risks."
+    }
+  ]
+}

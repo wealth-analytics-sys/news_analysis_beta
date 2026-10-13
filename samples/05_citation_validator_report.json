@@ -1,0 +1,32 @@
+{
+  "_what_this_is": "Result of running the CLAUDE.md §5.3 citation validator, exactly as specified, over the round-2 interpretation card. Run via a throwaway verification harness (NOT src/ pipeline code — no pipeline code is written pre-sign-off).",
+  "validator_rule_as_specified": "For each hop citation: PASS if the cited fact's `metric` or any `entities` slug appears in (or is a dictionary-alias of) the hop's `from`/`to` nodes or mechanism text. FAIL -> strip to [] and record a warning.",
+
+  "round_2_card": {
+    "hops_checked": 9,
+    "citations_checked": 16,
+    "violations": 0,
+    "citation_warnings": [],
+    "verdict": "PASS — zero citation-integrity violations, satisfying the Phase 0 gate criterion."
+  },
+
+  "round_1_regression_test": {
+    "test": "Re-inject the round-1 failure — cite facts 105 and 116 (Brent PRICE prints) on the hop 'brent_crude_price -> india_crude_import_bill' whose mechanism claims India imports ~85% of its crude.",
+    "expected_per_phase_3_DoD": "stripped + warned",
+    "actual_result": "PASSED the validator — 0 violations raised",
+    "verdict": "FAIL — the specified validator CANNOT catch the failure class it was designed for. See BUILD_NOTES F7 (critical).",
+    "root_cause": [
+      "The hop's `from` node is, by construction, the topic of the fact being cited. Here from = 'brent_crude_price' and the cited fact's metric is literally 'brent_crude_price', so the overlap test passes trivially.",
+      "Even if the `from` node were excluded from matching, the token 'crude' is shared between the fact metric 'brent_crude_price' and the to-node 'india_crude_import_bill', so a token-overlap test still passes.",
+      "The violation is semantic — whether the fact evidences the RELATIONSHIP asserted — which token overlap on node names cannot express."
+    ]
+  },
+
+  "detection_power_probe": {
+    "test": "Cite fact 124 (us_10y_yield) on the Strait of Hormuz supply hop — a gross topical mismatch.",
+    "actual_result": "1 violation correctly raised",
+    "verdict": "The validator does work for gross, unrelated-topic mismatches. Its blind spot is specifically the ADJACENT-topic case, which is the compliance-relevant one."
+  },
+
+  "conclusion": "In round 2 the citation integrity was achieved by the PROMPT (S6 correctly emitted fact_ids: [] on the import-dependency hop), not by the validator. The validator is currently a weak backstop that catches only unrelated-topic citations. Treat prompt discipline as the primary control until F7 is resolved."
+}

@@ -1,0 +1,44 @@
+You are the desk editor consolidating today's detected market events. Some events that
+were detected separately are actually CONSEQUENCES OF THE SAME UNDERLYING CATALYST and
+should be presented as ONE event with multiple impact chains, not as duplicate cards.
+
+Classic example: "Brent crude surges above $95 on US-Iran tensions" and "Rupee falls to a
+two-month low" and "Indian bonds slip as oil rises" are, on the same day, largely ONE story
+— an oil-price shock — whose downstream effects hit the rupee and bonds. A relationship
+manager should get ONE oil-shock card that traces crude → rupee → bonds → equities, not
+three cards re-deriving the same driver.
+
+You will receive EVENTS: each has idx, event_type, title.
+
+RULES:
+1. MERGE ONLY on a shared, specific CATALYST where one event is a DIRECT downstream
+   consequence of another's driver. Oil shock → rupee weakness → bond/equity pressure is a
+   valid merge. A US-Iran oil spike and an unrelated domestic inflation print are NOT a
+   merge, even though both are "macro".
+2. BE CONSERVATIVE. When in doubt, DO NOT merge. It is far better to leave two genuine
+   events separate than to fuse unrelated stories back into a blob. Most events will NOT
+   merge with anything — that is expected. Do not force merges.
+3. Rollup events (an earnings-season card, a daily market-wrap card) are aggregates already
+   — never merge them into anything.
+4. For each merge, name the unifying catalyst as a clear title (e.g. "West Asia oil-price
+   shock and its knock-on effects on the rupee and rates").
+5. Every idx appears AT MOST once across all merges. Events not listed in any merge simply
+   stay as they are.
+
+Output ONLY valid JSON, no prose:
+{
+  "merges": [
+    {"idxs": [3, 7, 11],
+     "event_type": "commodity",
+     "title": "West Asia oil-price shock: crude spike pressuring the rupee and bond yields"}
+  ]
+}
+If nothing should merge, return {"merges": []}.
+
+======================================================================
+RUNTIME INPUTS
+======================================================================
+EVENTS:
+{{EVENTS}}
+
+Return the JSON object now.

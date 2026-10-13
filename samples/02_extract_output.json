@@ -1,0 +1,481 @@
+{
+  "_round": "Phase 0 round 3 — index closes and daily % moves are NO LONGER persisted. They move to transient_context (used by S6, never written to extracted_facts).",
+  "event_id": 1,
+  "facts": [
+    {
+      "article_id": 1,
+      "metric": "brent_crude_price",
+      "value": "86.85",
+      "unit": "USD/barrel",
+      "as_of_period": "15-Jul-2026",
+      "claim_context": "Brent crude, the global oil benchmark, surged 4.26 per cent to USD 86.85 per barrel.",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "brent_crude_change_pct",
+      "value": "4.26",
+      "unit": "%",
+      "as_of_period": "15-Jul-2026 session",
+      "claim_context": "Brent crude, the global oil benchmark, surged 4.26 per cent to USD 86.85 per barrel.",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "inr_usd",
+      "value": "96",
+      "unit": "INR/USD",
+      "as_of_period": "15-Jul-2026",
+      "claim_context": "the rupee breaching the 96-per-US dollar mark has intensified concerns over imported inflation",
+      "category": "forex",
+      "entities": [
+        "inr",
+        "usd"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "wpi_inflation_yoy",
+      "value": "9.87",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "claim_context": "India's wholesale price inflation (WPI) rose to 9.87 per cent in June, compared with 9.68 per cent in May.",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false,
+      "tier_override_reason": "Monthly macro print. Provisional and subject to revision (article 2 notes April was revised), and an authoritative MOSPI feed exists — so it fails the durability test. See BUILD_NOTES F6: this class of fact needs an explicit ruling."
+    },
+    {
+      "article_id": 1,
+      "metric": "fii_net_equity_flow",
+      "value": "-3062.27",
+      "unit": "INR_crore",
+      "as_of_period": "13-Jul-2026 (Monday)",
+      "claim_context": "foreign institutional investors sold equities worth Rs 3,062.27 crore on Monday.",
+      "category": "equity",
+      "entities": [
+        "fii",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 2,
+      "metric": "wpi_inflation_yoy",
+      "value": "9.87",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "claim_context": "India's wholesale price index (WPI) inflation rose to 9.87 percent in June 2026, compared with 9.68 percent in May 2026.",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 2,
+      "metric": "wpi_all_commodities_index",
+      "value": "110.2",
+      "unit": "index_points",
+      "as_of_period": "June 2026 (base 2022-23)",
+      "claim_context": "The All-India Wholesale Price Index (WPI) for June 2026 stood at 110.2, against 109.9 in May 2026.",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 2,
+      "metric": "fuel_power_wpi_yoy",
+      "value": "27.41",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "claim_context": "Fuel and Power recorded the highest inflation rate at 27.41 per cent in June, although it moderated from 30.33 per cent in May.",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "fuel_power"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 2,
+      "metric": "mineral_oils_wpi_yoy",
+      "value": "46.48",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "claim_context": "mineral oils registered inflation of 46.48 per cent",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "mineral_oils"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 2,
+      "metric": "crude_petroleum_natural_gas_wpi_yoy",
+      "value": "34.75",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "claim_context": "crude petroleum and natural gas saw inflation of 34.75 per cent",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "crude_petroleum_natural_gas"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 2,
+      "metric": "manufactured_products_wpi_yoy",
+      "value": "7.48",
+      "unit": "%",
+      "as_of_period": "June 2026 YoY",
+      "claim_context": "The Manufactured Products segment recorded inflation of 7.48 percent, unchanged from May.",
+      "category": "macro_economics",
+      "entities": [
+        "india",
+        "wpi",
+        "manufactured_products"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 3,
+      "metric": "brent_crude_price",
+      "value": "85.6",
+      "unit": "USD/barrel",
+      "as_of_period": "past 4 sessions to 16-Jul-2026",
+      "claim_context": "Brent crude has climbed 14 per cent over the past four sessions to $85.6 a barrel.",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 3,
+      "metric": "brent_crude_change_pct",
+      "value": "14",
+      "unit": "%",
+      "as_of_period": "past 4 sessions to 16-Jul-2026",
+      "claim_context": "Brent crude has climbed 14 per cent over the past four sessions to $85.6 a barrel.",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 3,
+      "metric": "brent_crude_price",
+      "value": "~72",
+      "unit": "USD/barrel",
+      "as_of_period": "early July 2026 (month low)",
+      "claim_context": "From its low of about $72 at the beginning of July, the benchmark has risen nearly 19 per cent.",
+      "category": "commodity",
+      "entities": [
+        "brent_crude"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 3,
+      "metric": "strait_of_hormuz_global_oil_supply_share",
+      "value": "~20",
+      "unit": "%",
+      "as_of_period": null,
+      "claim_context": "the Strait of Hormuz, a key oil-shipping route through which about a fifth of global oil supplies pass.",
+      "category": "commodity",
+      "entities": [
+        "strait_of_hormuz",
+        "global_crude_supply"
+      ],
+      "fact_type": "structural",
+      "persistence_tier": "kb_durable",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "new_metric": true,
+      "new_entity": true
+    },
+    {
+      "article_id": 3,
+      "metric": "fpi_net_equity_flow",
+      "value": "-7443",
+      "unit": "INR_crore",
+      "as_of_period": "past 4 sessions to 16-Jul-2026",
+      "claim_context": "FPIs have turned net sellers over the past four sessions, offloading shares worth Rs 7,443 crore.",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 3,
+      "metric": "fpi_net_equity_flow",
+      "value": "-4206",
+      "unit": "INR_crore",
+      "as_of_period": "16-Jul-2026 (latest session)",
+      "claim_context": "They sold equities worth Rs 4,206 crore in the latest session alone.",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 3,
+      "metric": "fpi_net_equity_flow_cy_cumulative",
+      "value": "-2.6",
+      "unit": "INR_trillion",
+      "as_of_period": "CY2026 YTD",
+      "claim_context": "FPIs have already withdrawn Rs 2.6 trillion from Indian equities in 2026, exceeding the outflows recorded in any previous full calendar year.",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "kb_durable",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": true,
+      "new_entity": false,
+      "tier_override_reason": "point_in_time but a cumulative record-setting figure ('exceeds any previous full calendar year') — explicitly kb_durable per rule 4."
+    },
+    {
+      "article_id": 3,
+      "metric": "fpi_flow_sensitivity_to_crude",
+      "value": "foreign investors view India largely through the prism of oil prices",
+      "unit": null,
+      "as_of_period": null,
+      "claim_context": "U R Bhat, cofounder of Alphaniti Fintech, said foreign investors tend to view India largely through the prism of oil prices.",
+      "category": "equity",
+      "entities": [
+        "fpi",
+        "india",
+        "brent_crude"
+      ],
+      "fact_type": "structural",
+      "persistence_tier": "kb_durable",
+      "verification_status": "single_source",
+      "confidence": "low",
+      "new_metric": true,
+      "new_entity": false,
+      "tier_override_reason": "Named-expert MECHANISM claim, extracted as structural with confidence low per rule 6. This is the only supplied fact that speaks to the crude -> FPI transmission mechanism."
+    },
+    {
+      "article_id": 3,
+      "metric": "us_10y_yield",
+      "value": "4.59",
+      "unit": "%",
+      "as_of_period": "16-Jul-2026",
+      "claim_context": "with the US 10-year yield at around 4.59 per cent, investors can earn attractive returns in developed-market bonds",
+      "category": "global_markets",
+      "entities": [
+        "us_treasury_10y",
+        "usa"
+      ],
+      "fact_type": "point_in_time",
+      "persistence_tier": "event_context",
+      "verification_status": "single_source",
+      "confidence": "medium",
+      "new_metric": false,
+      "new_entity": false
+    }
+  ],
+  "transient_context": [
+    {
+      "article_id": 1,
+      "metric": "sensex_close",
+      "value": "77054.94",
+      "unit": "index_points",
+      "as_of_period": "15-Jul-2026 close",
+      "claim_context": "The 30-share BSE Sensex plunged 561.46 points, or 0.72 per cent, to settle at 77,054.94.",
+      "category": "equity",
+      "entities": [
+        "bse_sensex",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "sensex_change_pct",
+      "value": "-0.72",
+      "unit": "%",
+      "as_of_period": "15-Jul-2026 close",
+      "claim_context": "The 30-share BSE Sensex plunged 561.46 points, or 0.72 per cent, to settle at 77,054.94.",
+      "category": "equity",
+      "entities": [
+        "bse_sensex",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "nifty50_close",
+      "value": "24052.05",
+      "unit": "index_points",
+      "as_of_period": "15-Jul-2026 close",
+      "claim_context": "The NSE Nifty 50 also declined 158.95 points, or 0.66 per cent, to close at 24,052.05.",
+      "category": "equity",
+      "entities": [
+        "nifty_50",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "nifty50_change_pct",
+      "value": "-0.66",
+      "unit": "%",
+      "as_of_period": "15-Jul-2026 close",
+      "claim_context": "The NSE Nifty 50 also declined 158.95 points, or 0.66 per cent, to close at 24,052.05.",
+      "category": "equity",
+      "entities": [
+        "nifty_50",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    },
+    {
+      "article_id": 1,
+      "metric": "hcl_tech_change_pct",
+      "value": "-4.42",
+      "unit": "%",
+      "as_of_period": "15-Jul-2026 close",
+      "claim_context": "HCL Technologies emerged as the biggest loser, dropping 4.42 per cent.",
+      "category": "equity",
+      "entities": [
+        "hcl_technologies",
+        "india"
+      ],
+      "fact_type": "point_in_time",
+      "verification_status": "single_source",
+      "confidence": "high",
+      "new_metric": false,
+      "new_entity": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Streamlit runtime config for the S7 portal (read from the repo root, locally and on
+# Streamlit Community Cloud). BUILD_NOTES F43.
+
+[client]
+# Never show tracebacks / exception messages to portal users (they leak file paths,
+# code and DB details). Errors are still written to the server log.
+showErrorDetails = "none"
+# Hide developer options (rerun/clear-cache/settings) from viewers.
+toolbarMode = "viewer"
+
+[server]
+# Explicit secure defaults — do NOT copy the .devcontainer flags that disable these.
+enableXsrfProtection = true
+enableCORS = true
+
+[browser]
+gatherUsageStats = false

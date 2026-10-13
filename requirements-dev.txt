@@ -1,0 +1,2 @@
+# Test suite only.
+pytest==8.3.4

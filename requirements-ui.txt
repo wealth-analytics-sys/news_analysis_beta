@@ -1,0 +1,6 @@
+# S7 UI only. Heavy tree (altair, pyarrow, websockets, cryptography) — this is
+# the install most likely to hit the Windows "[Errno 13] Permission denied"
+# antivirus-lock error. If it fails there, pause real-time protection or add a
+# Defender exclusion for this folder, then retry. The pipeline (S1-S6) does not
+# need any of this.
+streamlit==1.41.1

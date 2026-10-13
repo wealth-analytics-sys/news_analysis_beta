@@ -1,0 +1,281 @@
+# Metrics dictionary seed — canonical names, aliases, category, default persistence tier.
+#
+# AWAITING RUSHABH'S REVIEW (CLAUDE.md §9 open question 4). Load with:
+#   python -m src.load_dictionaries
+#
+# default_persistence_tier follows the §5.1 rule 4 test:
+#   "will this differ next week AND does an authoritative feed exist?" -> event_context
+# The LLM may override with a tier_override_reason.
+#
+# NOT PERSISTED AT ALL (decision D1): benchmark index closes, index session % moves and
+# single-stock daily % moves. They are listed here with tier `transient` so S4 has an
+# explicit signal, but S5 never writes them to extracted_facts.
+
+metrics:
+  # ---------------- transient: never stored (D1)
+  - canonical_name: sensex_close
+    aliases: [bse sensex, sensex, s&p bse sensex]
+    category: equity
+    default_persistence_tier: transient
+  - canonical_name: sensex_change_pct
+    aliases: [sensex change, sensex move]
+    category: equity
+    default_persistence_tier: transient
+  - canonical_name: nifty50_close
+    aliases: [nifty, nifty 50, nse nifty]
+    category: equity
+    default_persistence_tier: transient
+  - canonical_name: nifty50_change_pct
+    aliases: [nifty change, nifty move]
+    category: equity
+    default_persistence_tier: transient
+  - canonical_name: bank_nifty_close
+    aliases: [nifty bank, bank nifty]
+    category: equity
+    default_persistence_tier: transient
+  - canonical_name: stock_daily_change_pct
+    aliases: [share price change, stock move]
+    category: equity
+    default_persistence_tier: transient
+
+  # ---------------- commodity
+  - canonical_name: brent_crude_price
+    aliases: [brent, brent crude, global oil benchmark]
+    category: commodity
+    default_persistence_tier: event_context
+  - canonical_name: brent_crude_change_pct
+    aliases: [brent change, crude move]
+    category: commodity
+    default_persistence_tier: event_context
+  - canonical_name: wti_crude_price
+    aliases: [wti, west texas intermediate]
+    category: commodity
+    default_persistence_tier: event_context
+  - canonical_name: indian_crude_basket_price
+    aliases: [indian basket, crude basket]
+    category: commodity
+    default_persistence_tier: event_context
+  - canonical_name: gold_price_domestic
+    aliases: [gold price, mcx gold]
+    category: commodity
+    default_persistence_tier: event_context
+  - canonical_name: natural_gas_price
+    aliases: [gas price, henry hub]
+    category: commodity
+    default_persistence_tier: event_context
+  - canonical_name: india_crude_import_dependency_pct
+    aliases: [crude import dependence, oil import reliance]
+    category: commodity
+    default_persistence_tier: kb_durable
+  - canonical_name: strait_of_hormuz_global_oil_supply_share
+    aliases: [hormuz share, hormuz throughput]
+    category: commodity
+    default_persistence_tier: kb_durable
+
+  # ---------------- forex
+  - canonical_name: inr_usd
+    aliases: [rupee, rupee per dollar, usd inr, inr/usd]
+    category: forex
+    default_persistence_tier: event_context
+  - canonical_name: inr_usd_change_paise
+    aliases: [rupee change, rupee move]
+    category: forex
+    default_persistence_tier: event_context
+  - canonical_name: dollar_index
+    aliases: [dxy, us dollar index]
+    category: forex
+    default_persistence_tier: event_context
+  - canonical_name: forex_reserves
+    aliases: [fx reserves, foreign exchange reserves]
+    category: forex
+    default_persistence_tier: event_context
+
+  # ---------------- macro
+  - canonical_name: wpi_inflation_yoy
+    aliases: [wholesale price inflation, wpi, wholesale inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: wpi_all_commodities_index
+    aliases: [wpi index, all commodities index]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: cpi_inflation_yoy
+    aliases: [retail inflation, cpi, consumer price inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: core_cpi_inflation_yoy
+    aliases: [core inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: food_inflation_yoy
+    aliases: [food price inflation, cfpi]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: fuel_power_wpi_yoy
+    aliases: [fuel and power inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: mineral_oils_wpi_yoy
+    aliases: [mineral oils inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: crude_petroleum_natural_gas_wpi_yoy
+    aliases: [crude petroleum inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: manufactured_products_wpi_yoy
+    aliases: [manufactured products inflation]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: gdp_growth_yoy
+    aliases: [gdp growth, real gdp]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: iip_growth_yoy
+    aliases: [industrial production, iip]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: pmi_manufacturing
+    aliases: [manufacturing pmi]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: pmi_services
+    aliases: [services pmi]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: current_account_deficit_pct_gdp
+    aliases: [cad, current account deficit]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: fiscal_deficit_pct_gdp
+    aliases: [fiscal deficit]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: trade_deficit
+    aliases: [merchandise trade deficit]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: unemployment_rate
+    aliases: [jobless rate, cmie unemployment]
+    category: macro_economics
+    default_persistence_tier: event_context
+  - canonical_name: cad_sensitivity_to_crude
+    aliases: [current account crude sensitivity]
+    category: macro_economics
+    default_persistence_tier: kb_durable
+
+  # ---------------- rates and debt
+  - canonical_name: repo_rate
+    aliases: [rbi repo, policy rate, repo]
+    category: debt_rates
+    default_persistence_tier: event_context
+  - canonical_name: reverse_repo_rate
+    aliases: [reverse repo]
+    category: debt_rates
+    default_persistence_tier: event_context
+  - canonical_name: crr
+    aliases: [cash reserve ratio]
+    category: debt_rates
+    default_persistence_tier: event_context
+  - canonical_name: slr
+    aliases: [statutory liquidity ratio]
+    category: debt_rates
+    default_persistence_tier: event_context
+  - canonical_name: india_10y_gsec_yield
+    aliases: [10 year gsec, benchmark yield, g-sec yield]
+    category: debt_rates
+    default_persistence_tier: event_context
+  - canonical_name: us_10y_yield
+    aliases: [us treasury yield, us 10 year]
+    category: global_markets
+    default_persistence_tier: event_context
+  - canonical_name: fed_funds_rate
+    aliases: [fed rate, federal funds rate]
+    category: global_markets
+    default_persistence_tier: event_context
+  - canonical_name: credit_growth_yoy
+    aliases: [bank credit growth, loan growth]
+    category: debt_rates
+    default_persistence_tier: event_context
+  - canonical_name: deposit_growth_yoy
+    aliases: [bank deposit growth]
+    category: debt_rates
+    default_persistence_tier: event_context
+
+  # ---------------- flows
+  - canonical_name: fii_net_equity_flow
+    aliases: [fii flows, foreign institutional investors net]
+    category: equity
+    default_persistence_tier: event_context
+  - canonical_name: fpi_net_equity_flow
+    aliases: [fpi flows, foreign portfolio investors net]
+    category: equity
+    default_persistence_tier: event_context
+  - canonical_name: fpi_net_equity_flow_cy_cumulative
+    aliases: [fpi calendar year outflow, ytd fpi flows]
+    category: equity
+    default_persistence_tier: kb_durable
+  - canonical_name: dii_net_equity_flow
+    aliases: [dii flows, domestic institutional investors net]
+    category: equity
+    default_persistence_tier: event_context
+  - canonical_name: sip_monthly_inflow
+    aliases: [sip inflows, monthly sip]
+    category: equity
+    default_persistence_tier: event_context
+  - canonical_name: mutual_fund_aum
+    aliases: [mf aum, industry aum]
+    category: equity
+    default_persistence_tier: event_context
+  - canonical_name: fpi_flow_sensitivity_to_crude
+    aliases: [fpi crude sensitivity]
+    category: equity
+    default_persistence_tier: kb_durable
+
+  # ---------------- corporate / sector
+  - canonical_name: quarterly_net_profit
+    aliases: [pat, net profit, quarterly profit]
+    category: sector_industry
+    default_persistence_tier: event_context
+  - canonical_name: quarterly_revenue
+    aliases: [revenue, topline, sales]
+    category: sector_industry
+    default_persistence_tier: event_context
+  - canonical_name: net_interest_margin
+    aliases: [nim]
+    category: sector_industry
+    default_persistence_tier: event_context
+  - canonical_name: gross_npa_ratio
+    aliases: [gnpa, gross npa]
+    category: sector_industry
+    default_persistence_tier: event_context
+  - canonical_name: sector_input_cost_share
+    aliases: [input cost share, raw material share]
+    category: sector_industry
+    default_persistence_tier: kb_durable
+  - canonical_name: index_foreign_ownership_share
+    aliases: [fpi ownership, foreign ownership]
+    category: equity
+    default_persistence_tier: kb_durable
+
+  # ---------------- policy
+  - canonical_name: gst_rate
+    aliases: [gst]
+    category: policy_regulation
+    default_persistence_tier: kb_durable
+  - canonical_name: ltcg_tax_rate
+    aliases: [long term capital gains tax]
+    category: policy_regulation
+    default_persistence_tier: kb_durable
+  - canonical_name: stcg_tax_rate
+    aliases: [short term capital gains tax]
+    category: policy_regulation
+    default_persistence_tier: kb_durable
+  - canonical_name: import_duty_rate
+    aliases: [customs duty, import tariff]
+    category: policy_regulation
+    default_persistence_tier: kb_durable
+  - canonical_name: sebi_regulation_change
+    aliases: [sebi rule, sebi circular]
+    category: policy_regulation
+    default_persistence_tier: kb_durable

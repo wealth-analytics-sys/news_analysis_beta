@@ -1,0 +1,40 @@
+# Portal allowlist (S7 sign-in). Contains password HASHES only — never plaintext (BUILD_NOTES F39).
+#
+# Users sign in with their EMAIL + password. 5 failed attempts lock an account for 15 minutes.
+#
+#   name:          shown in the portal header and stamped on usage/feedback
+#   email:         the sign-in identifier; also attributes usage_events + feedback
+#   password_hash: PBKDF2-SHA256 hash. To add a user or reset a password run
+#                      python -m src.auth new     (random password + hash)
+#                      python -m src.auth hash    (choose your own, min 12 chars)
+#                  paste the hash here, and hand the password to the user out of band.
+#   admin:         true -> also sees the operator tabs (Diagnostics, Pipeline health,
+#                  Articles). RMs (admin: false) see only Events, Search + Feedback.
+
+users:
+  - name: Rushabh
+    email: rushabhhpancholi@gmail.com
+    password_hash: "pbkdf2_sha256$600000$wRuOwH3Ax3o4Rbxp9CGbeQ==$jFHK7XlzXP6Qaeymy1LpYwsdz4sqVKJy4ktAg2IDMpg="
+    admin: true
+
+
+  # --- add approved relationship managers / reviewers below ---
+  - name: Mumbai
+    email: rm.mumbai@example.com
+    password_hash: "pbkdf2_sha256$600000$CGd0lWZcG/KGG+/GEVCfUQ==$sr8vsiO1vxcuECvU0gp8XMkQFomA3/7s6qfU6HBhOYs="
+    admin: false
+
+  - name: Delhi
+    email: rm.delhi@example.com
+    password_hash: "pbkdf2_sha256$600000$uoBe0n0ebBCWIvvuLxWJaQ==$XiS/6miLuBT8snIuOWyfG0gf+Z5aX+id3npjCYXDSrs="
+    admin: false
+
+  - name: Indore
+    email: rm.indore@example.com
+    password_hash: "pbkdf2_sha256$600000$XrijQZjakIS/LuECfgU+ow==$v63b1vUhFdqG3YBASbmSKvDkA7ZK+QsLnXEZt1jUzeg="
+    admin: false
+
+  - name: Kolkata
+    email: rm.kolkata@example.com
+    password_hash: "pbkdf2_sha256$600000$2Di2kVqMRGkQIsAwGNRUWg==$3k9SXRIIfuZutjdy0IYbHPE+S6f9G1VtRU0ImsKbfeE="
+    admin: false
